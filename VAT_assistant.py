@@ -1,10 +1,8 @@
-from dotenv import load_dotenv
 import streamlit as st
 import openai
 from pinecone import Pinecone
 import os
 
-load_dotenv()
 oa_api_key = os.getenv("OPENAI_API_KEY")
 pc_api_key = os.getenv("PINECONE_API_KEY")
 
