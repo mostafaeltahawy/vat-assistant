@@ -1,10 +1,9 @@
 import streamlit as st
 import openai
 from pinecone import Pinecone
-import os
 
-oa_api_key = os.getenv("OPENAI_API_KEY")
-pc_api_key = os.getenv("PINECONE_API_KEY")
+oa_api_key = st.secrets["api_keys"]["OPENAI_API_KEY"]
+pc_api_key = st.secrets["api_keys"]["PINECONE_API_KEY"]
 
 # Ensure the API key is set
 if not pc_api_key:
