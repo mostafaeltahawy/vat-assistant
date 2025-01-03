@@ -50,9 +50,9 @@ def get_answer(query, level_of_detail):
 
     Based on the above information and by citing the data used, answer the following query in an accurate manner:
 
-    Make sure you dont mention in the answer that this is based on the collection of excerpts rather say the source it is from which is the vat laws documents name in the meta data along with page number and source link to document on nbr website in bahrain, make the answer easy to read, well formatted and section and keep the references at the end of the answer while making the important figures or facts in bold or underlined.
+    Make sure you dont mention in the answer that this is based on the collection of excerpts rather say the source it is from which is the vat laws documents name in the meta data along with page number and source link to document on nbr website in bahrain, make the answer easy to read, well formatted and section and keep the references at the end of the answer while making the important figures, thresholds or deadlines in bold.
 
-    If the excerpts are not related to the documents or the data do not match please state that this data is not available in the knowledge base of this assistant and guide the user to the FAQs page of the nbr website (https://www.nbr.gov.bh/vat_faqs) and write some follow up questions for the user to ask.
+    If the excerpts are not related to the query or the data do not match please state that this data is not available in the knowledge base of this assistant and guide the user to the FAQs page of the nbr website (https://www.nbr.gov.bh/vat_faqs) and write some follow up questions for the user to ask.
 
     Make your answer {level_of_detail}
 
@@ -62,7 +62,7 @@ def get_answer(query, level_of_detail):
     response = openai.chat.completions.create(
         model="gpt-4", 
         messages=[
-            {"role": "system", "content": "You are a helpful assistant specialized in VAT-related questions in Bahrain."},
+            {"role": "system", "content": "You are an expert in Bahrain VAT laws. Answer questions with references to the VAT documents from the NBR website."},
             {"role": "user", "content": prompt}
         ],
         temperature=0.6  
@@ -75,7 +75,7 @@ st.title("VAT Information Assistant")
 
 # Input text box
 st.header("Ask your question:")
-user_query = st.text_input("Type your question here:", value="")
+user_query = st.text_input("Type your question here:", value="", placeholder="Ask about VAT laws, exemptions, or penalties..")
 
 # User selects the level of detail
 level_of_detail = st.radio("Choose the level of detail for the answer:", ["Brief", "Detailed"], index=1)
